@@ -1,0 +1,12 @@
+.vs {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: auto;
+    width: 45%;
+    background-color: beige;
+    margin: 10px auto auto auto;
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

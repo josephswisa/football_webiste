@@ -1,0 +1,56 @@
+.login-container{
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    background-color: whitesmoke;
+
+}
+
+
+
+.fields-text{
+display: flex;
+    text-align: left;
+}
+
+
+.login-title{
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.login-button{
+    background-color: #293846;
+    border: none;
+    color: white;
+    padding: 5px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.startMatch {
+    width: 50%;
+    height: 20%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    margin: 3% auto auto auto;
+    gap: 3%;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 20px;
+}
+
+

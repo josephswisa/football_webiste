@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+    background-color: azure;
+    justify-content: center;
+    align-content: center;
+    margin: 0px auto auto auto;
+
+
+}
+
+th,
+td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+tr:hover {
+    background-color: whitesmoke;
+}
