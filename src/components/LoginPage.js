@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "../css/LoginPage.css";
 import {SignUp} from "./SignUp";
 import {StartMatch} from "./StartMatch";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink, Redirect, useHistory} from "react-router-dom";
 import {sendApiGetRequest, sendApiPostRequest} from "../ApiRequests";
 
 
@@ -12,7 +12,9 @@ function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error , setError]= useState(null);
+    const [redirect,setRedirect] = useState(false)
     let user = {id: '',username: '', token: '',creationDate:''};
+    let history = useHistory();
 
 
 
@@ -25,11 +27,14 @@ const onLogin=()=> {
     if(signInResponse.success) {
         window.$userDetails.loggedIn = true;
         user = signInResponse.user;
-
+        setRedirect(true);
     }else
     {
         setError(signInResponse.errorCode);
 
+    }
+    if(redirect === true){
+        history.push('/start-match')
     }
 
 }

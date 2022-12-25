@@ -1,74 +1,18 @@
 import React from 'react';
 import TeamLogo from "../TeamLogo";
+import {useEffect} from "react";
+import {sendApiGetRequest} from "../ApiRequests";
 
 function LiveTable() {
-    const data2 =[
-        {
-            "id": 1,
-            "name": "Manchester-City",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 3
-        },
-        {
-            "id": 2,
-            "name": "Arsenal",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 3,
-            "name": "Maccabi-Haifa",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 4,
-            "name": "Hapoel-Ashkelon",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 5,
-            "name": "Tottenham",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 6,
-            "name": "Bayern-Munich",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        } ]
+    let data;
+
+    useEffect(() => {
+        sendApiGetRequest("http://localhost:8989/get-live-table?", (response) => {
+            data = response.data;
+
+        })
+    }, )
+
 
     return (
         <>
@@ -84,7 +28,7 @@ function LiveTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {data2.map(item => (
+                {data.map(item => (
                     <tr>
                         <td>
                             <img src={TeamLogo[item.id -1].src} style={{width:'30px',height:'30px'}} />

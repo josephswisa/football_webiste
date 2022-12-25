@@ -1,26 +1,18 @@
 import React from 'react';
 import "../css/livematches.css"
 import TeamLogo from "../TeamLogo";
+import {useEffect} from "react";
+import {sendApiGetRequest} from "../ApiRequests";
 
 
 function LiveMatches() {
-    const data = [
-        {
-            "id": 1,
-            "team1": {
-                "id": 1,
-                "name": "Manchester-City"
-            },
-            "team2": {
-                "id": 2,
-                "name": "Arsenal"
-            },
-            "team1_goals": 4,
-            "team2_goals": 2,
-            "is_live": true,
-            "user_id_handler": 1
-        }
-    ]
+    let data;
+
+    useEffect(() => {
+        sendApiGetRequest("http://localhost:8989/get-live-matches?", (response) => {
+            data = response.data;
+        })
+    },)
 
     return (
         <>

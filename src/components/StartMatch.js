@@ -2,80 +2,18 @@ import React,{useState} from "react";
 import "../css/LoginPage.css";
 import {useEffect} from "react";
 import axios from "axios";
+import {sendApiGetRequest, sendApiPostRequest} from "../ApiRequests";
 
 export function StartMatch(){
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedItem2, setSelectedItem2] = useState(null);
-    const [error,setError] = useState(null);
+    let data;
 
-    const data = [
-        {
-            "id": 1,
-            "name": "Manchester-City",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 2,
-            "name": "Arsenal",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 3,
-            "name": "Maccabi-Haifa",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 4,
-            "name": "Hapoel-Ashkelon",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 5,
-            "name": "Tottenham",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        {
-            "id": 6,
-            "name": "Bayern-Munich",
-            "totalGames": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0,
-            "numberOfWins": 0,
-            "numberOfLoses": 0,
-            "numberOfDraws": 0,
-            "points": 0
-        },
-        ]
+    useEffect(() => {
+        sendApiGetRequest("http://localhost:8989/get-teams?", (response) => {
+            data = response.data;
+
+        })},)
 
 
     const handleChange = event => {
@@ -93,9 +31,17 @@ export function StartMatch(){
 
     };
 
-    const onStart=()=>{
-
+    const onStart=()=> {
+        sendApiPostRequest("http://localhost:8989/add-new-live-match?", {
+            team1id: selectedItem.id,
+            team2id: selectedItem2.id,
+            userId: window.$userDetails.userId,
+            token: window.$userDetails.token
+        }, (response) => {
+            let startMatch = response.data;
+        });
     }
+
 
 
     return(

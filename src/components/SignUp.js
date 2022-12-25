@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import "../css/LoginPage.css";
 import axios from "axios";
+import {sendApiPostRequest} from "../ApiRequests";
+import {useHistory} from "react-router-dom";
 
 
 export function SignUp(){
@@ -10,27 +12,37 @@ export function SignUp(){
     const [userData, setUserData]= useState({username:'',password:''})
     const [error, setError] = useState(null);
     const [data,setData] = useState(null);
+    const [redirect,setRedirect] = useState(false);
+    let history = useHistory();
+    let user;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.post('/create-user', {
-                    userData
-                });
-                setData(response.data);
-            } catch (error) {
-                setError('failed');
-            }
-        };
-        const promise = fetchData();
-    }, );
 
 
     const onSignup =()=> {
         if((signPass.length >= 8)&&(signPassCheck === signPass)) {
             let newUser={username: signUser, password: signPass}
-            setUserData(newUser)
+            setUserData(newUser);
+            let signUpResponse ="";
+            sendApiPostRequest("http://localhost:8989/create-user?", {username: newUser.username, password: newUser.password}, (response) => {
+                signUpResponse = response.data;
+            });
+            if(signUpResponse.success) {
+                window.$userDetails.loggedIn = true;
+                user = signUpResponse.user;
+                window.$userDetails.userId = user.id;
+                window.$userDetails.token = user.token;
+                setRedirect(true);
 
+
+
+            }else
+            {
+                setError(signUpResponse.errorCode);
+            }
+            if(redirect === true){
+                history.push("/start-match")
+
+            }
         }
     }
 
