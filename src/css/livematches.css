@@ -1,12 +1,51 @@
-.vs {
+.live-match {
     display: flex;
-    justify-content: center;
-    align-content: center;
-    height: auto;
-    width: 45%;
-    background-color: beige;
-    margin: 10px auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
     border-radius: 10px;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    margin: 10px auto;
+    text-align: center;
+
+}
+
+.singleTeam{
+    background-color: silver;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 0;
+    width: 30%;
+    align-self: stretch;
+    /* Add a shadow effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    /* Add a light color to the text */
+    animation: pulse 1s infinite;
+
+
+}
+
+
+
+.new-match {
+    display: grid;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.all-matches {
+    margin: 0 auto auto auto;
+}
+@keyframes pulse {
+    /* Define the animation steps */
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }

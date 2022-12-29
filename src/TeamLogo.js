@@ -1,8 +1,8 @@
 import Manchester from './assets/Manchester_City_FC_badge.svg.png';
 import Arsenal from './assets/Arsenal_FC.svg';
 import Bayren from './assets/bayren.png';
-import Ashkelon from './assets/19977.png';
-import Haifa from './assets/1609.png';
+import Ashkelon from './assets/Ashkelon.png';
+import Haifa from './assets/Haifa.png';
 import Tottenham from './assets/Tottenham_Hotspur.svg.png'
 
 
